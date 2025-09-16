@@ -1,0 +1,17 @@
+[Unit]
+Description=Autonomous UAV Companion Service
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/Autonomous-UAV-with-Obstacle-Avoidance
+ExecStart=/usr/bin/python3 /home/pi/Autonomous-UAV-with-Obstacle-Avoidance/src/companion/main.py
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=companion
+
+[Install]
+WantedBy=multi-user.target
