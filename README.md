@@ -49,28 +49,43 @@ This project focuses on a modular design so you can swap sensors (ultrasonic, RP
 ```
 autonomous-uav-obstacle-avoidance/
 ├── .github/
+│   ├── ISSUE_TEMPLATE.md
+│   └── workflows/
+│       └── python-ci.yml
 ├── docs/
 │   ├── wiring/
-│   │   └── (images here)
+│   │   ├── pixhawk-pi-telemetry.png
+│   │   └── power-diagram.png
+│   ├── sensors.md
 │   ├── wiring.md
 │   └── testing-checklist.md
 ├── hardware/
-│   └── bill_of_materials.md
+│   ├── bill_of_materials.md
+│   ├── 3d-print-files/        # (optional) mechanical mounts, STL
+│   └── schematics/            # png / svg wiring schematics
 ├── src/
-│   └── companion/
-│       ├── main.py
-│       ├── mavlink_client.py
-│       ├── sensors.py
-│       ├── vision.py
-│       ├── controllers.py
-│       └── config.py
+│   ├── companion/             # companion computer code (python package)
+│   │   ├── _init_.py
+│   │   ├── main.py            # entrypoint (the script we discussed)
+│   │   ├── sensors.py         # ultrasonic / lidar wrappers
+│   │   ├── vision.py          # OpenCV / TFLite helpers (optional)
+│   │   ├── mavlink_client.py  # MAVSDK wrapper + connection logic
+│   │   ├── controllers.py     # avoidance / maneuver functions
+│   │   └── config.py          # configurable constants (baud, pins, thresholds)
+│   └── tools/
+│       ├── calibrate_hcsr04.py
+│       └── parse_logs.py
 ├── examples/
-│   ├── companion.service
-│   └── start_companion.sh
-├── setup.sh
+│   ├── start_companion.sh
+│   ├── companion.service      # systemd service file (for /etc/systemd/system/)
+│   └── sitl/                  # SITL launch scripts & examples
+│       └── sitl_launch.sh
 ├── requirements.txt
+├── setup.sh                   # convenience script to prep a Pi (installs deps)
 ├── README.md
-└── LICENSE
+├── LICENSE
+├── .gitignore
+└── CHANGELOG.md 
 ```
 
 ---
