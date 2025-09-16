@@ -1,4 +1,4 @@
-mavsdk==0.45.0
+mavsdk
 pymavlink==2.4.36
 opencv-python==4.8.0.74
 rplidar==1.10
